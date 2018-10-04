@@ -1,7 +1,3 @@
-<?php
-
- ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,18 +21,25 @@
 
 			margin: 30px;
 		}
+		a{
+			text-align: center;
+		}
 	</style>
 </head>
 <body>
 
 	<div id="loginForm">
-		<form action="userAuthentication.php" method="post">
-			Account<input type="text" name="account">
-			<br>
-			Password<input type="text" name="password">
-			<br>
-			<input type="submit" value="Log In">
-		</form>
+		<div>
+			<form action="userAuthentication.php" method="post">
+				Account<input type="text" name="account">
+				<br>
+				Password<input type="password" name="password">
+				<br>
+				<input type="submit" value="Log In">
+			</form>
+			<a href="createNewAccount.php">Create New Account</a>
+		</div>
+		
 	</div>
 	
 </body>

@@ -1,11 +1,6 @@
 <?php 
 
-	$msg = $_GET["msg"];
-	$msg = explode(',', $msg);
-	$no = $msg[0];
-	$account = $msg[1];
-	var_dump($msg);
-
+	$no = $_GET["no"];
 
 	include('connectDB.php');
 	$pdo = db_conn();
@@ -20,7 +15,7 @@
 	  errorMsg($stmt);
 	}else{
 	  //select.phpへリダイレクト
-	  header('Location: index.php?account='.$account);
+	  header('Location: index.php');
 	  exit;
 	}
 

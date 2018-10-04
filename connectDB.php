@@ -29,5 +29,13 @@ function h($str){
   return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
 
+function check_ssid(){
+	if(!isset($_SESSION['check_ssid']) || $_SESSION['check_ssid']!=session_id()){
+		exit('Login Error!');
+	}else{
+		session_regenerate_id(true);
+		$_SESSION['chk_ssid'] = session_id();
+	}
+}
 
 ?>

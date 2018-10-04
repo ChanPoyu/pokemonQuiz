@@ -1,5 +1,6 @@
 <?php  
-	$account = $_GET["account"];
+	session_start();
+	$account = $_SESSION["account"];
 	include('connectDB.php');
 	$pdo = db_conn();
 
@@ -8,7 +9,6 @@
 	$stmt = $pdo->prepare($sql);
 	$stmt -> bindValue(':account', $account, PDO::PARAM_STR);
 	$status = $stmt->execute();
-
 
 ?>
 <!DOCTYPE html>
@@ -54,10 +54,10 @@
 			echo $display;
 		}
 
-		echo '<a href="index.php?account='.$account.'">back to main page</a>';
+		
 	 ?>
 
-
+	<a href="index.php?account='.$account.'">back to main page</a>
 
 	
 </body>

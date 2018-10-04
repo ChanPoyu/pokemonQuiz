@@ -1,5 +1,6 @@
 <?php 
-	$account = $_GET["account"];
+	session_start();
+	$account = $_SESSION["account"];
 ?>
 
 <!DOCTYPE html>
@@ -19,9 +20,8 @@
 		<input type="submit" name="add" value="add">
 	</form>
 
-	<?php 
-		echo '<a href="index.php?account='.$account.'">back to main page</a>';
-	 ?>
+	<a href="index.php">back to main page</a>
+
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>

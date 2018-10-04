@@ -13,15 +13,10 @@
   		// エラーでないとき
 		
 	}
-	session_start();
-	$account = $_SESSION['account'];
-	$manager_flag = $_SESSION['manager_flag'];
-	if($account == ''){
-		header('Location: indexGuest.php');
-	}
+
  ?>
 
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 	<title>Get Your Pokemon</title>
@@ -48,27 +43,15 @@
 			margin: 10px;
 		}
 	</style>
-	<script>
-		function confirmDelete(){
-			var del=confirm("Are you sure to delete me from your pokedex?");
-			if (del==true){
-				// console.log("deleted");
-			   	document.location = "delet.php?action=DoThis";
-			}else{
-				return del;
-			}
-		}	
-	</script>
+
 </head>
 <body>
 
 	<h1 style="text-align: center">Pokedex</h1>
 
 	<div id="navBar">
-		
-		<a href="addNewPokemon.php" class="navbarlink">Add Discoverd Pokemon</a>
-		<a href="myPokemon.php" class="navbarlink">My Pokemon</a>
-		<a href="handleLogOut.php" class="navbarlink">Log Out</a>	
+
+		<a href="login.php" class="navbarlink">Log In</a>	
 
 	</div>
 
@@ -83,11 +66,7 @@
 				while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
 					$no = $result["No"];
 					$name = $result["Name"];
-					if($result["Owner"] == $account){
-						$name = $name.'(own)';
-					}
 					$image_url = $result["imgURL"];
-					$msg = $no.','.$account;
 					$display = '
 						<div class="display_pokemon" id="pokemon'.$no.'">
 							<p>
@@ -95,13 +74,8 @@
 							</p>
 							<image src="'.$image_url.'" height="92" weight="92">
 							<br>
+						</div>
 					';
-
-					if($manager_flag == 1){
-						$display = $display.'<a href="delete.php?no='.$no.'" onclick="return confirmDelete()">[remove me]</a>';
-					}
-
-					$display = $display.'</div>';
 					
 					if($no % 4 == 1){
 						$coloum1 = $coloum1.$display;
